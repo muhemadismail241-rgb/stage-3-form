@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فۆرمی هەڵبژاردنی بەش - قۆناغی سێیەم</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rabar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* فۆنتەکان */
+        
+        @font-face {
+            font-family: 'Rabar_021';
+            src: url('https://fonts.googleapis.com/css2?family=Rabar&display=swap');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Rabar_022';
+            src: url('https://fonts.googleapis.com/css2?family=Rabar&display=swap');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: linear-gradient(120deg, #0074D9 0%, #1E90FF 50%, #87CEEB 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Rabar_021', 'Rabar', sans-serif;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: containerFade 0.8s ease-out;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0074D9 0%, #005CAB 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+            padding: 10px;
+            border: 2px solid #0074D9;
+        }
+        
+        .logo-line1 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #0074D9;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .logo-line2 {
+            font-size: 8px;
+            color: #005CAB;
+            margin-top: 3px;
+            text-align: center;
+            line-height: 1.1;
+        }
+        
+        .logo-line3 {
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .logo-line4 {
+            font-size: 12px;
+            font-weight: bold;
+            color: #005CAB;
+            margin-top: 3px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #444;
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Rabar_021', 'Rabar', sans-serif;
+            background: #f9f9f9;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0074D9;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 116, 217, 0.2);
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            background: #f9f9f9;
+            min-height: 140px;
+        }
+        
+        .option:hover {
+            border-color: #0074D9;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 116, 217, 0.15);
+        }
+        
+        .option input {
+            display: none;
+        }
+        
+        .option.selected {
+            border-color: #0074D9;
+            background: linear-gradient(135deg, #0074D9 0%, #005CAB 100%);
+            color: white;
+            transform: scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 116, 217, 0.25);
+        }
+        
+        .option.selected .icon {
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .option.selected .option-title {
+            color: white;
+        }
+        
+        .option-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icon {
+            font-size: 32px;
+            color: #0074D9;
+            transition: all 0.3s;
+        }
+        
+        .option-title {
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #0074D9 0%, #005CAB 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 116, 217, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+            font-family: 'Rabar_021', 'Rabar', sans-serif;
+        }
+        
+        .copyright {
+            margin-top: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .developer {
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-30px) translateX(50px);
+            transition: opacity 0.4s, transform 0.4s;
+            z-index: 1000;
+            font-family: 'Rabar_021', 'Rabar', sans-serif;
+            font-size: 1.1rem;
+            max-width: 350px;
+            text-align: center;
+        }
+        
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+        
+        .notification.error {
+            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+        }
+        
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes containerFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .hosting-info {
+            background: #f0f8ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 2px dashed #0074D9;
+        }
+        
+        .hosting-info h3 {
+            color: #0074D9;
+            margin-bottom: 15px;
+            font-family: 'Rabar_022', 'Rabar', sans-serif;
+        }
+        
+        .hosting-info ol {
+            padding-right: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .hosting-info li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .hosting-info a {
+            color: #0074D9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .hosting-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 15px;
+            }
+            .header {
+                padding: 25px 20px;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .options {
+                grid-template-columns: 1fr;
+            }
+            .form-container {
+                padding: 25px 20px;
+            }
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+            .logo-line1 {
+                font-size: 12px;
+            }
+            .logo-line2 {
+                font-size: 7px;
+            }
+            .logo-line3 {
+                font-size: 8px;
+            }
+            .logo-line4 {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-line1">هـم وليـز</div>
+                    <div class="logo-line2">Hawler Computer Institute</div>
+                    <div class="logo-line3">SINCE</div>
+                    <div class="logo-line4">2006</div>
+                </div>
+            </div>
+            <h1>فۆرمی هەڵبژاردنی بەش</h1>
+            <p>بۆ قۆناغی سێیەمی خوێندن</p>
+        </div>
+
+        <div class="form-container">
+            <form id="departmentForm">
+                <div class="form-group">
+                    <label for="studentName">ناوی قوتابی</label>
+                    <input type="text" id="studentName" name="studentName" required placeholder="ناوی تەواوی خۆت بنوسە">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">ژمارەی مۆبایل</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="٠٧٧٠ ١٢٣ ٤٥٦٧" pattern="[0-9]{10,11}">
+                </div>
+
+                <div class="form-group">
+                    <label>بەشی خوێندن هەڵبژێرە</label>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="department" value="programming" required>
+                            <div class="option-content">
+                                <span class="icon"><i class="fas fa-code"></i></span>
+                                <span class="option-title">پرۆگرام</span>
+                            </div>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="department" value="web">
+                            <div class="option-content">
+                                <span class="icon"><i class="fas fa-paint-brush"></i></span>
+                                <span class="option-title">وێب دیزاین</span>
+                            </div>
+                        </label>
+
+                        <label class="option">
+                            <input type="radio" name="department" value="network">
+                            <div class="option-content">
+                                <span class="icon"><i class="fas fa-network-wired"></i></span>
+                                <span class="option-title">نێتوۆرک</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn">
+                    <i class="fab fa-telegram-plane"></i> ناردنی فۆرم
+                </button>
+            </form>
+
+            <div class="hosting-info">
+                <h3>ڕێگای هۆستکردنی فۆرمەکە:</h3>
+                <ol>
+                    <li>کۆدی سەرەوە کۆپی بکە و لە فایلێکی HTML هەڵیبگریە (وەک: form.html)</li>
+                    <li>فایلەکە هۆست بکە لەسەر هەر سێرڤەرێکی وێب (وەک: GitHub Pages, Netlify, Vercel)</li>
+                    <li>بۆ هۆستکردنی ئاسان لەسەر GitHub Pages:
+                        <ul>
+                            <li>هەژمارێکی GitHub دروست بکە (ئەگەر نییە)</li>
+                            <li>Repositoryێکی نوێ دروست بکە</li>
+                            <li>فایلەکە Upload بکە و ناوی index.html بنێ</li>
+                            <li>بچەرە سەر Settings > Pages و Branchی main هەڵبژێرە</li>
+                            <li>لە ماوەی چەند خولەکێکدا فۆرمەکەت دەردەکەوێت لەسەر ئینتەرنێت</li>
+                        </ul>
+                    </li>
+                    <li>دەتوانیت هەروەها لەسەر Netlify هۆست بکەیت بە ڕاکێشانی فایلەکە بۆ سەر ماڵپەڕەکەیان</li>
+                </ol>
+                <p>پەیوەندی بکە بەم ماڵپەڕانە:
+                    <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>,
+                    <a href="https://www.netlify.com/" target="_blank">Netlify</a>,
+                    <a href="https://vercel.com/" target="_blank">Vercel</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>هەر حوقوقی پارێزراوە</p>
+            <p class="copyright">© ٢٠٢٥</p>
+            <p class="developer">پەرەپێدەر: محمد اسماعیل</p>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">نامەکەت بەسەرکەوتوویی نێردرا!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('departmentForm');
+            const options = document.querySelectorAll('.option');
+            const notification = document.getElementById('notification');
+            const submitBtn = document.getElementById('submitBtn');
+            const particlesContainer = document.getElementById('particles');
+
+            // دروستکردنی پارتیکلەکان (ڕوناکی)
+            createParticles();
+
+            // زیاکردنی کاریگەری بۆ هەڵبژاردنی بەشەکان
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.querySelector('input').checked = true;
+                });
+            });
+
+            // نیشاندانی ئاگاداری
+            function showNotification(message, isError = false) {
+                notification.textContent = message;
+                notification.classList.remove('error');
+
+                if (isError) {
+                    notification.classList.add('error');
+                }
+
+                notification.classList.add('show');
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            // دروستکردنی پارتیکلەکان بۆ ڕوناکی
+            function createParticles() {
+                const colors = ['rgba(255,255,255,0.5)', 'rgba(200,230,255,0.5)', 'rgba(230,240,255,0.5)'];
+
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+
+                    const size = Math.random() * 15 + 5;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+
+                    particle.style.left = `${Math.random() * 100}vw`;
+                    particle.style.top = `${Math.random() * 100}vh`;
+
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                    particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
+            // ناردنی زانیارییەکان بۆ تێلێگرام
+            async function sendToTelegram(formData) {
+                const botToken = '8463637173:AAGLVBRkBuG_fRQ8JcSuWGMGwJygoca4tZE';
+                const chatId = '@formstage3_bot';
+                const message = `
+                    فۆرمی نوێ:
+                    ناوی قوتابی: ${formData.studentName}
+                    ژمارەی مۆبایل: ${formData.phoneNumber}
+                    بەش: ${formData.departmentText}
+                `;
+
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: chatId,
+                            text: message,
+                            parse_mode: 'HTML'
+                        })
+                    });
+
+                    const data = await response.json();
+                    return data.ok;
+                } catch (error) {
+                    console.error('هەڵە لە ناردنی نامەکە:', error);
+                    return false;
+                }
+            }
+
+            // چاکسازی فۆرم کە دەنێردرێت
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const studentName = document.getElementById('studentName').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const department = document.querySelector('input[name="department"]:checked');
+
+                if (!department) {
+                    showNotification('تکایە بەشێک هەڵبژێرە', true);
+                    return;
+                }
+
+                const departmentText = {
+                    'programming': 'پرۆگرام',
+                    'web': 'وێب دیزاین',
+                    'network': 'نێتوۆرک'
+                }[department.value];
+
+                // ناردن بۆ تێلێگرام
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> نێردرێت...';
+
+                const formData = {
+                    studentName,
+                    phoneNumber,
+                    department: department.value,
+                    departmentText
+                };
+
+                const success = await sendToTelegram(formData);
+
+                if (success) {
+                    showNotification('فۆرمەکەت بەسەرکەوتوویی نێردرا بۆ تێلێگرام!');
+                    form.reset();
+                    options.forEach(opt => opt.classList.remove('selected'));
+                } else {
+                    showNotification('هەڵەیەک ڕوویدا لە ناردنی فۆرمەکە', true);
+                }
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fab fa-telegram-plane"></i> ناردنی فۆرم';
+            });
+        });
+    </script>
+</body>
+
+</html>
